@@ -1,0 +1,31 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
+
+class Blog extends Model
+{
+    protected $primaryKey = 'blog_id';
+    protected $guarded = [];
+
+    /*
+     * Define relationships
+     */
+    public function user(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(User::class, 'user_id', 'user_id');
+    }
+
+    /*
+     * Define attributes
+     */
+    public function getExcerptAttribute(): string
+    {
+        if(isset($this->attributes['excerpt'])) {
+            return $this->attributes['excerpt'];
+        }
+        return Str::limit($this->body, 50);
+    }
+}
