@@ -15,8 +15,8 @@ return new class extends Migration
             $table->increments('blog_id')->primary();
             $table->unsignedInteger('user_id');
             $table->foreign('user_id')->references('user_id')->on('users');
-            $table->string('blog_title', 150)->index();
-            $table->string('blog_excerpt', 200)->nullable();
+            $table->string('blog_title', 200)->index();
+            $table->string('blog_excerpt', 50)->nullable();
             $table->text('blog_body');
             $table->timestamps();
         });
