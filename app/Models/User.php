@@ -33,12 +33,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Blog::class, 'user_id', 'user_id');
     }
-    
+
     /*
      * Define attributes
      */
-    public function getNameAttribute()
-    {
-        
-    }
+
 }
