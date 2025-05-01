@@ -46,4 +46,18 @@ class User extends Authenticatable
     {
         return $this->display_name ?? $this->user_name;
     }
+
+    /*
+     * Define model events
+     */
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($user) {
+            if (is_null($user->role_id)) {
+                $user->role_id = 2; // assign user role by default to users
+            }
+        });
+    }
 }

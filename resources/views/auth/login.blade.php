@@ -27,6 +27,7 @@
                 </div>
                 <input title="Login" type="submit" value="Login" class="form-submit-button">
             </form>
+            <a href="{{route('dashboard.register')}}" style="color: var(--red);">Register</a>
         </div>
     </div>
 </body>

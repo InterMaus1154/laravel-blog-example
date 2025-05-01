@@ -20,4 +20,10 @@ class ViewController extends Controller
 
         return view('auth.login');
     }
+
+    // show registration page
+    public function showRegister()
+    {
+        return view('auth.register');
+    }
 }

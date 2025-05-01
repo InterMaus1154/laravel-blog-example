@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreUserRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller
@@ -32,6 +34,25 @@ class AuthController extends Controller
 
         auth()->login($user);
         return redirect()->intended(route('dashboard.index'));
+    }
+
+    // register new user
+    public function register(StoreUserRequest $request)
+    {
+        try {
+            $user = User::create($request->only('user_name', 'display_name', 'user_email', 'password'));
+
+            // login user after registration
+            session()->regenerateToken();
+            auth()->login($user);
+            return redirect()->route('dashboard.index');
+
+        } catch (\Throwable $e) {
+            Log::error($e->getMessage());
+            return redirect()
+                ->route('dashboard.register')
+                ->withErrors(['internal_error' => 'An unknown internal error occurred. Try register later or contact the administrator!']);
+        }
     }
 
     // logout a user
