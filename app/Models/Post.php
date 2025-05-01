@@ -2,12 +2,15 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
-class Blog extends Model
+class Post extends Model
 {
-    protected $primaryKey = 'blog_id';
+    use HasFactory;
+
+    protected $primaryKey = 'post_id';
     protected $guarded = [];
 
     /*
@@ -18,12 +21,22 @@ class Blog extends Model
         return $this->belongsTo(User::class, 'user_id', 'user_id');
     }
 
+    public function category(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(PostCategory::class, 'category_id', 'post_category_id');
+    }
+
     /*
-     * Define attributes
+     * Define extra attributes
+     */
+
+    /**
+     * If excerpt is unavailable (null), show 50 chars of post body
+     * @return string
      */
     public function getExcerptAttribute(): string
     {
-        if(isset($this->attributes['excerpt'])) {
+        if (isset($this->attributes['excerpt'])) {
             return $this->attributes['excerpt'];
         }
         return Str::limit($this->body, 50);

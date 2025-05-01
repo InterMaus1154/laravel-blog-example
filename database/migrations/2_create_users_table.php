@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->increments('user_id')->primary();
+            $table->unsignedInteger('role_id');
+            $table->foreign('role_id')->references('role_id')->on('roles');
             $table->string('user_name', 150)->unique()->index();
             $table->string('display_name', 150)->nullable();
             $table->string('user_email')->unique()->index();

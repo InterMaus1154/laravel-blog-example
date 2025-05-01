@@ -22,6 +22,7 @@ class UserFactory extends Factory
     {
         return [
             'user_name' => fake()->unique()->userName,
+            'role_id' => 2, // default user role
             'display_name' => fake()->optional(weight: 0.5)->userName,
             'user_email' => fake()->unique()->safeEmail,
             'password' => 'password'

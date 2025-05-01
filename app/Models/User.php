@@ -29,13 +29,21 @@ class User extends Authenticatable
     /*
      * Define relationships
      */
-    public function blogs(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function posts(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
-        return $this->hasMany(Blog::class, 'user_id', 'user_id');
+        return $this->hasMany(Post::class, 'user_id', 'user_id');
     }
 
     /*
      * Define attributes
      */
 
+    /**
+     * Return display name if not null, otherwise return username
+     * @return string
+     */
+    public function getNameAttribute(): string
+    {
+        return $this->display_name ?? $this->user_name;
+    }
 }
