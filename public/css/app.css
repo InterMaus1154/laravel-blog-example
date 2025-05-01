@@ -1,0 +1,32 @@
+
+
+/*header style*/
+header {
+    background-color: var(--red);
+    padding: 2rem 2.5rem;
+    color: #fff;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+}
+
+header h1 a {
+    text-decoration: none;
+}
+
+header .header-right {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    font-size: 1.25rem;
+}
+
+header nav ul {
+    list-style: none;
+
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}

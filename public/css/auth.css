@@ -1,0 +1,28 @@
+.auth-page{
+    height: 100svh;
+    height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.auth-form{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 2rem;
+    background-color: #fff;
+    width: 40%;
+    min-width: 300px;
+    border-radius: .25rem;
+}
+
+.auth-form h1{
+    color: var(--red);
+    text-align: center;
+}
+
+.auth-form label{
+    color: var(--red);
+}

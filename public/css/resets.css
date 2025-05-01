@@ -1,0 +1,38 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-family: 'Roboto', sans-serif;
+}
+
+body{
+    background-color: #d4d4d8;
+}
+
+a {
+    display: block;
+    color: inherit;
+}
+
+img {
+    display: block;
+}
+
+button{
+    font-family: inherit;
+    color: inherit;
+}
+
+:root{
+    /*define app colors*/
+    --red: #b91c1c;
+}
+
+.error{
+    color: #7f1d1d;
+    font-weight: bold;
+}
