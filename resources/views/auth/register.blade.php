@@ -10,7 +10,7 @@
 </head>
 <body>
 <div class="auth-page">
-    <div class="auth-form">
+    <div class="form-wrapper">
         <h1>Register</h1>
         @include('response.errors')
         <form action="{{route('auth.register')}}" method="POST">
@@ -42,6 +42,7 @@
             </div>
             <input title="Register" type="submit" value="Register" class="form-submit-button">
         </form>
+        <a href="{{route('dashboard.login')}}" style="color: var(--red);">Login</a>
     </div>
 </div>
 </body>

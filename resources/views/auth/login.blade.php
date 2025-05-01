@@ -10,7 +10,7 @@
 </head>
 <body>
     <div class="auth-page">
-        <div class="auth-form">
+        <div class="form-wrapper">
             <h1>Login</h1>
             @include('response.errors')
             <form action="{{route('auth.login')}}" method="POST">
