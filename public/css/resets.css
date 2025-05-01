@@ -36,3 +36,17 @@ button{
     color: #7f1d1d;
     font-weight: bold;
 }
+
+.action-form{
+    display: flex;
+    align-items: center;
+}
+
+.action-form input[type="submit"]{
+    background: none;
+    color:inherit;
+    font-family: inherit;
+    font-size: inherit;
+    border: none;
+    cursor: pointer;
+}

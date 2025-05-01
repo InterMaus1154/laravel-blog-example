@@ -4,7 +4,7 @@
     </h1>
     <div class="header-right">
         @auth
-            <p>Welcome back user</p>
+            <p>Welcome back {{auth()->user()->name}}</p>
         @endauth
         <nav>
             <ul>
@@ -19,7 +19,12 @@
                 @endguest
                 {{--links visible only for logged in users--}}
                 @auth
-
+                    <li>
+                        <form class="action-form" action="{{route('auth.logout')}}" method="POST">
+                            @csrf
+                            <input type="submit" value="Logout">
+                        </form>
+                    </li>
                 @endauth
             </ul>
         </nav>
