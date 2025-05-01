@@ -12,7 +12,7 @@
 </head>
 <body>
 {{--include header--}}
-<x-header/>
+<x-partial.header/>
 <main>
     {{--insert main content--}}
     {{$slot}}

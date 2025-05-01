@@ -28,6 +28,10 @@ Route::group(['prefix' => 'auth', 'controller' => AuthController::class], functi
 
 // routes requiring authenticated user
 Route::middleware(AuthMiddleware::class)
-    ->group(function(){
-       Route::post('/auth/logout', [AuthController::class, 'logout'])->name('auth.logout');
+    ->group(function () {
+
+        // logout user
+        Route::post('/auth/logout', [AuthController::class, 'logout'])->name('auth.logout');
+
+
     });

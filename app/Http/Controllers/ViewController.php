@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use Illuminate\Http\Request;
 
 class ViewController extends Controller
@@ -9,7 +10,11 @@ class ViewController extends Controller
     // index dashboard page
     public function index()
     {
-        return view('dashboard.index');
+        $posts = Post::with(['author', 'category'])
+            ->orderByDesc('created_at')
+            ->select(['post_title', 'post_excerpt', 'post_body', 'created_at'])
+            ->paginate(20);
+        return view('dashboard.index', compact('posts'));
     }
 
     // show login page

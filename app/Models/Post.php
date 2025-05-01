@@ -16,7 +16,7 @@ class Post extends Model
     /*
      * Define relationships
      */
-    public function user(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function author(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(User::class, 'user_id', 'user_id');
     }
