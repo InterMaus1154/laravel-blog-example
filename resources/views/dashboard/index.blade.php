@@ -7,7 +7,7 @@
         {{--display a list of posts--}}
         <section class="post-section">
             <div class="post-pagination">
-                {{$posts->links('vendor.pagination.default')}}
+                {{$posts->links('pagination.index')}}
                 <p>Page {{$posts->currentPage()}} of {{$posts->lastPage()}} pages</p>
             </div>
             <div class="post-list">

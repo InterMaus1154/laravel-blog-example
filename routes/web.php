@@ -4,6 +4,7 @@ use App\Http\Controllers\ViewController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Middleware\AuthMiddleware;
+use App\Http\Controllers\PostController;
 
 Route::controller(ViewController::class)
     ->group(function () {
@@ -33,5 +34,11 @@ Route::middleware(AuthMiddleware::class)
         // logout user
         Route::post('/auth/logout', [AuthController::class, 'logout'])->name('auth.logout');
 
-
     });
+
+// post related routes
+Route::group(['prefix' => 'post', 'controller' => PostController::class], function () {
+
+    // show a specific post
+    Route::get('/{post}/show', 'show')->name('post.show');
+});

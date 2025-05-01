@@ -12,8 +12,8 @@ class ViewController extends Controller
     {
         $posts = Post::with(['author', 'category'])
             ->orderByDesc('created_at')
-            ->select(['post_title', 'post_excerpt', 'post_body', 'created_at'])
-            ->paginate(20);
+            ->select(['post_title', 'post_excerpt', 'post_body', 'created_at', 'post_id'])
+            ->paginate(10);
         return view('dashboard.index', compact('posts'));
     }
 

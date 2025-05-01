@@ -1,4 +1,5 @@
- <nav>
+{{--from laravel default pagination--}}
+<nav>
         <ul class="pagination">
             {{-- Previous Page Link --}}
             @if ($paginator->onFirstPage())
