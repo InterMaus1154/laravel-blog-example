@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StorePostRequest;
+use App\Http\Requests\UpdatePostRequest;
 use App\Models\Post;
 use App\Models\PostCategory;
 use Illuminate\Http\Request;
@@ -56,8 +57,7 @@ class PostController extends Controller
         }
 
         try {
-            $post = auth()
-                ->user()
+            $post = auth()->user()
                 ->posts()
                 ->create($request->only('post_title', 'post_excerpt', 'post_body', 'category_id'));
             return redirect()
@@ -85,5 +85,27 @@ class PostController extends Controller
             ->get();
 
         return view('post.edit', compact('post', 'categories'));
+    }
+
+    // update post
+    public function update(UpdatePostRequest $request, Post $post)
+    {
+        if(Gate::denies('update', $post)){
+            return redirect()
+                ->route('dashboard.index')
+                ->withErrors(['auth_error' => 'You are unauthorised to update this post!']);
+        }
+
+        try{
+            $post->update($request->only('post_title', 'post_excerpt', 'category_id', 'post_body'));
+            return redirect()
+                ->route('post.show', compact('post'))
+                ->with('success', 'Post successfully updated!');
+        }catch(\Throwable $e){
+            Log::error($e->getMessage());
+            return redirect()
+                ->route('dashboard.index')
+                ->withErrors(['internal_error' => 'An unknown internal error occurred. Try again later or contact the administrator!']);
+        }
     }
 }
