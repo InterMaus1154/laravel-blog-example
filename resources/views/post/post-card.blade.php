@@ -5,4 +5,9 @@
             {{$post->post_title}}
         </a>
     </h3>
+    <p class=""></p>
+    <p class="post-excerpt">
+        {{$post->excerpt}}
+    </p>
+    <a href="{{route('post.show', compact('post'))}}" class="action-link">Read More</a>
 </div>

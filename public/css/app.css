@@ -116,11 +116,26 @@ main {
 
     background-color: #fff;
     border-radius: .25rem;
+
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-start;
 }
 
 .post-card .post-title{
-    font-size: 1.5rem;
-    text-align: center;
+    font-size: 1.125rem;
+    text-align: left;
+    color: var(--dark-red);
+    a{
+        text-decoration: none;
+        &:hover{
+            text-decoration: underline;
+        }
+    }
 }
 
+.post-card .post-excerpt{
+    font-style: italic;
+}
 

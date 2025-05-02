@@ -36,9 +36,9 @@ class Post extends Model
      */
     public function getExcerptAttribute(): string
     {
-        if (isset($this->attributes['excerpt'])) {
-            return $this->attributes['excerpt'];
+        if (isset($this->attributes['post_excerpt'])) {
+            return $this->attributes['post_excerpt'];
         }
-        return Str::limit($this->body, 50);
+        return Str::limit($this->post_body, 50);
     }
 }

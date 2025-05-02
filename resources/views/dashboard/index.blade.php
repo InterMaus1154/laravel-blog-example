@@ -6,14 +6,14 @@
         </aside>
         {{--display a list of posts--}}
         <section class="post-section">
+            {{--post pagination--}}
             <div class="post-pagination">
                 {{$posts->links('pagination.index')}}
                 <p>Page {{$posts->currentPage()}} of {{$posts->lastPage()}} pages</p>
             </div>
             <div class="post-list">
-                @foreach($posts as $post)
-                    <x-partial.post-card :post="$post"/>
-                @endforeach
+                {{--loop through posts--}}
+                @each('post.post-card', $posts, 'post')
             </div>
         </section>
     </div>
