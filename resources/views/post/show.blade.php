@@ -7,7 +7,7 @@
         @can('update', $post)
             <div class="post-controls">
                 <a href="" class="action-link blue">Edit</a>
-                <form action="" method="POST">
+                <form action="{{route('post.delete', compact('post'))}}" method="POST">
                     @csrf
                     @method('DELETE')
                     <input type="submit" value="X" class="action-link">

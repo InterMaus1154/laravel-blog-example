@@ -41,4 +41,7 @@ Route::group(['prefix' => 'post', 'controller' => PostController::class], functi
 
     // show a specific post
     Route::get('/{post}/show', 'show')->name('post.show');
+
+    // delete a post
+    Route::delete('/{post}/delete', 'delete')->name('post.delete');
 });

@@ -38,6 +38,13 @@ button{
 .error{
     color: var(--dark-red);
     font-weight: bold;
+    font-size: 1.25rem;
+}
+
+.success{
+    font-weight: bold;
+    color: #16a34a;
+    font-size: 1.25rem;
 }
 
 .action-form{
