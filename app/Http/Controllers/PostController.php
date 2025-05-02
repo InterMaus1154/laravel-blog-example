@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\PostCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Log;
@@ -39,6 +40,8 @@ class PostController extends Controller
     // show post creating form
     public function create()
     {
-        return view('post.create');
+        // fetch categories
+        $categories = PostCategory::select('post_category_id', 'post_category_name')->get();
+        return view('post.create', compact('categories'));
     }
 }
