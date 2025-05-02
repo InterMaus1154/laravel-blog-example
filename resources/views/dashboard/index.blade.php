@@ -1,9 +1,5 @@
 <x-layout>
     <div class="index-wrapper">
-        {{--filter for posts--}}
-        <aside class="post-filter">
-            <h2>Filter Posts</h2>
-        </aside>
         {{--display a list of posts--}}
         <section class="post-section">
             {{--post pagination--}}
