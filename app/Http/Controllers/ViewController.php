@@ -10,9 +10,9 @@ class ViewController extends Controller
     // index dashboard page
     public function index()
     {
-        $posts = Post::with(['author', 'category'])
+        $posts = Post::with('author', 'category')
             ->orderByDesc('created_at')
-            ->select(['post_title', 'post_excerpt', 'post_body', 'created_at', 'post_id'])
+            ->select(['post_title', 'post_excerpt', 'post_body', 'created_at', 'post_id', 'category_id', 'user_id'])
             ->paginate(10);
         return view('dashboard.index', compact('posts'));
     }

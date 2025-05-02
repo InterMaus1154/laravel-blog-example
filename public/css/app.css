@@ -135,6 +135,10 @@ main {
     }
 }
 
+.post-card .post-category{
+    font-weight: bold;
+}
+
 .post-card .post-excerpt{
     font-style: italic;
 }
