@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StorePostRequest;
 use App\Models\Post;
 use App\Models\PostCategory;
 use Illuminate\Http\Request;
@@ -43,5 +44,30 @@ class PostController extends Controller
         // fetch categories
         $categories = PostCategory::select('post_category_id', 'post_category_name')->get();
         return view('post.create', compact('categories'));
+    }
+
+    // store new post in db
+    public function store(StorePostRequest $request)
+    {
+        if(Gate::denies('create', Post::class)){
+            return redirect()
+                ->route('dashboard.index')
+                ->withErrors(['auth_error' => 'You are unauthorised to create a post!']);
+        }
+
+        try{
+            $post = auth()
+                    ->user()
+                    ->posts()
+                    ->create($request->only('post_title', 'post_excerpt', 'post_body', 'category_id'));
+            return redirect()
+                ->route('post.show', compact('post'))
+                ->with('success', 'Post successfully created!');
+        }catch(\Throwable $e){
+            Log::error($e->getMessage());
+            return redirect()
+                ->route('dashboard.index')
+                ->withErrors(['internal_error' => 'An unknown internal error occurred. Try again later or contact the administrator!']);
+        }
     }
 }

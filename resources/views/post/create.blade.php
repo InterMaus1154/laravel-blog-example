@@ -29,7 +29,7 @@
             {{--input for post pody--}}
             <div class="input-wrapper">
                 <label for="post_body">Content</label>
-                <textarea id="post_body" name="post_body" rows="5"></textarea>
+                <textarea id="post_body" name="post_body" rows="5">{{old('post_body', '')}}</textarea>
             </div>
             <input title="Create new post" type="submit" value="Create new post" class="form-submit-button">
         </form>

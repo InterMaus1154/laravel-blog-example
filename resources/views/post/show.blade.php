@@ -2,6 +2,7 @@
 @props(['post'])
 <x-layout page_title="{{$post->post_title}}">
     <div class="post-page">
+        @include('response.success')
         <h2>{{$post->post_title}}</h2>
         {{--only owner or admin can update or delete post--}}
         @can('update', $post)
