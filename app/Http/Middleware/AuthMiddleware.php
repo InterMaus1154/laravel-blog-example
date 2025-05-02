@@ -15,7 +15,14 @@ class AuthMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (!auth()->check()) return redirect()->route('dashboard.login');
+        if (!auth()->check()){
+            session()->put('url.intended', url()->full());
+
+            return redirect()
+                ->route('dashboard.login')
+                ->withErrors(['auth_error' => 'Please login for this action!']);
+        }
+
         return $next($request);
     }
 }

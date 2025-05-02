@@ -11,6 +11,9 @@
                 <li>
                     <a href="{{route('dashboard.index')}}">Home</a>
                 </li>
+                <li>
+                    <a href="{{route('post.create')}}">Create new post</a>
+                </li>
                 {{--links visible only for NOT logged in users--}}
                 @guest
                     <li>

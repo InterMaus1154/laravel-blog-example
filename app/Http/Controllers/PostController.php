@@ -35,4 +35,10 @@ class PostController extends Controller
                 ->withErrors(['internal_error' => 'An unknown internal error occurred. Try again later or contact the administrator!']);
         }
     }
+
+    // show post creating form
+    public function create()
+    {
+        return view('post.create');
+    }
 }

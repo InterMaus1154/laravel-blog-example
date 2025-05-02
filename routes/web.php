@@ -42,6 +42,16 @@ Route::group(['prefix' => 'post', 'controller' => PostController::class], functi
     // show a specific post
     Route::get('/{post}/show', 'show')->name('post.show');
 
-    // delete a post
-    Route::delete('/{post}/delete', 'delete')->name('post.delete');
+    Route::middleware(AuthMiddleware::class)
+        ->group(function(){
+
+            // delete a post
+            Route::delete('/{post}/delete', 'delete')->name('post.delete');
+
+            // show create post form
+            Route::get('/create', 'create')->name('post.create');
+
+            // store a post
+            Route::post('/store', 'store')->name('post.store');
+        });
 });
