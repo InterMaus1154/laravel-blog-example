@@ -47,6 +47,15 @@ class User extends Authenticatable
         return $this->display_name ?? $this->user_name;
     }
 
+    /**
+     * Return if the user is admin or not
+     * @return bool
+     */
+    public function getIsAdminAttribute(): bool
+    {
+        return $this->role_id == 1;
+    }
+
     /*
      * Define model events
      */

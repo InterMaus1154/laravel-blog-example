@@ -121,6 +121,8 @@ main {
     flex-direction: column;
     gap: 1rem;
     align-items: flex-start;
+
+    position: relative;
 }
 
 .post-card .post-title{
@@ -143,3 +145,11 @@ main {
     font-style: italic;
 }
 
+.post-card .post-controls{
+    position: absolute;
+    right: .75rem;
+    top: .75rem;
+
+    display: flex;
+    gap: .25rem;
+}

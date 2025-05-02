@@ -61,8 +61,18 @@ button{
     border-radius: .25rem;
     cursor: pointer;
     text-decoration: none;
+    border: 0;
+    height: min-content;
+    font-weight: bold;
 
     &:hover{
         background-color: var(--dark-red);
+    }
+}
+
+.action-link.blue{
+    background-color: #3b82f6;
+    &:hover{
+        background-color: #1e40af;
     }
 }
