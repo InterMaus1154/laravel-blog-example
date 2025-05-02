@@ -53,5 +53,10 @@ Route::group(['prefix' => 'post', 'controller' => PostController::class], functi
 
             // store a post
             Route::post('/store', 'store')->name('post.store');
+
+            Route::get('/{post}/edit', 'edit')->name('post.edit');
+
+            // update post
+            Route::put('/{post}/update', 'update')->name('post.update');
         });
 });

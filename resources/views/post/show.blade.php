@@ -7,7 +7,7 @@
         {{--only owner or admin can update or delete post--}}
         @can('update', $post)
             <div class="post-controls">
-                <a href="" class="action-link blue">Edit</a>
+                <a href="{{route('post.edit', compact('post'))}}" class="action-link blue">Edit</a>
                 <form action="{{route('post.delete', compact('post'))}}" method="POST">
                     @csrf
                     @method('DELETE')

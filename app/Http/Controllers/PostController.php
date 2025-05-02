@@ -22,7 +22,7 @@ class PostController extends Controller
     // delete a post by id
     public function delete(Post $post)
     {
-        if(Gate::denies('delete', $post)){
+        if (Gate::denies('delete', $post)) {
             return redirect()
                 ->route('dashboard.index')
                 ->withErrors(['auth_error' => 'You are unauthorised to delete this post!']);
@@ -49,25 +49,41 @@ class PostController extends Controller
     // store new post in db
     public function store(StorePostRequest $request)
     {
-        if(Gate::denies('create', Post::class)){
+        if (Gate::denies('create', Post::class)) {
             return redirect()
                 ->route('dashboard.index')
                 ->withErrors(['auth_error' => 'You are unauthorised to create a post!']);
         }
 
-        try{
+        try {
             $post = auth()
-                    ->user()
-                    ->posts()
-                    ->create($request->only('post_title', 'post_excerpt', 'post_body', 'category_id'));
+                ->user()
+                ->posts()
+                ->create($request->only('post_title', 'post_excerpt', 'post_body', 'category_id'));
             return redirect()
                 ->route('post.show', compact('post'))
                 ->with('success', 'Post successfully created!');
-        }catch(\Throwable $e){
+        } catch (\Throwable $e) {
             Log::error($e->getMessage());
             return redirect()
                 ->route('dashboard.index')
                 ->withErrors(['internal_error' => 'An unknown internal error occurred. Try again later or contact the administrator!']);
         }
+    }
+
+    // show post edit form
+    public function edit(Post $post)
+    {
+        if (Gate::denies('update', $post)) {
+            return redirect()
+                ->route('dashboard.index')
+                ->withErrors(['auth_error' => 'You are unauthorised to update this post!']);
+        }
+
+        // fetch categories
+        $categories = PostCategory::select('post_category_id', 'post_category_name')
+            ->get();
+
+        return view('post.edit', compact('post', 'categories'));
     }
 }
